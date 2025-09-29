@@ -1,12 +1,16 @@
 #include "RecipeManager.h"
 
 std::shared_ptr<Recipe>
-RecipeManager::addItem(const std::string &ingredientName) {
-  return items.addChild(ingredientName);
+RecipeManager::addRecipe(const std::string &recipeForm) {
+  return items.addChild(recipeForm);
 }
 
 std::shared_ptr<Recipe>
-RecipeManager::addItem(const std::string &ingredientName,
+RecipeManager::addRecipe(const std::string &recipeForm,
                        const std::shared_ptr<Recipe> &parent) {
-  return parent->addChild(ingredientName);
+  return parent->addChild(recipeForm);
+}
+
+std::shared_ptr<Recipe> RecipeManager::findRecipe(const std::string &recipeForm) {
+  items.findDescendant(recipeForm);
 }

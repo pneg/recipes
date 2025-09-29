@@ -1,7 +1,5 @@
 #include "Ingredient.h"
 #include "Recipe.h"
-#include <vector>
-#include <string>
 
 Ingredient::Ingredient(std::shared_ptr<Recipe> r) {
   recipe = r;
@@ -9,7 +7,8 @@ Ingredient::Ingredient(std::shared_ptr<Recipe> r) {
   attributes = None;
 }
 
-Ingredient::Ingredient(std::shared_ptr<Recipe> r, const std::vector<Ingredient> &args) {
+Ingredient::Ingredient(std::shared_ptr<Recipe> r,
+                       const std::vector<Ingredient> &args) {
   recipe = r;
   cookingMethod = Uncooked;
   attributes = None;

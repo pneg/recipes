@@ -1,22 +1,13 @@
-#ifndef INGREDIENT_H
-#define INGREDIENT_H
-
+#pragma once
+#include "Recipe.h"
 #include <vector>
-#include <memory>
-#include <string>
 
-// Forward declaration to avoid circular dependency
-class Recipe;
+enum ECookingMethod { Uncooked };
 
-enum ECookingMethod {
-  Uncooked
-};
+enum EAttribute { None = 0 };
 
-enum EAttribute {
-  None = 0
-};
-
-// An ingredient is an instance of a recipe realized with specific inputs (other ingredients)
+// An ingredient is an instance of a recipe realized with specific inputs (other
+// ingredients)
 
 class Ingredient {
 private:
@@ -33,5 +24,3 @@ public:
   ECookingMethod getCookingMethod() const;
   EAttribute getAttributes() const;
 };
-
-#endif // INGREDIENT_H
