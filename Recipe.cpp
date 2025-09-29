@@ -1,8 +1,5 @@
+#pragma once
 #include "Recipe.h"
-#include "Ingredient.h"
-#include <memory>
-#include <string>
-#include <vector>
 
 Recipe::Recipe(const std::string &form, std::shared_ptr<Recipe> p) {
   format = form;

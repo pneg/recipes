@@ -1,13 +1,8 @@
-#ifndef RECIPE_H
-#define RECIPE_H
-
+#pragma once
+#include "Ingredient.h"
 #include <memory>
 #include <string>
 #include <unordered_set>
-#include <vector>
-
-// Forward declaration to avoid circular dependency
-class Ingredient;
 
 // Recipes, or recipe classes, are functions that take ingredients as parameters
 // and return ingredients As an analogy to object-oriented programming, think
@@ -41,5 +36,3 @@ public:
 
   bool validateArgs(const std::vector<Ingredient> &args) const;
 };
-
-#endif // RECIPE_H
