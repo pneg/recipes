@@ -1,9 +1,9 @@
 #pragma once
-#include <vector>
-#include <variant>
 #include <memory>
 #include <string>
 #include <unordered_set>
+#include <variant>
+#include <vector>
 
 class RecipeManager;
 class Ingredient;
@@ -29,6 +29,10 @@ private:
   std::unordered_set<std::shared_ptr<Recipe>> children;
   std::shared_ptr<Recipe> parent;
   std::vector<std::variant<std::string, std::shared_ptr<Recipe>>> params;
+  std::vector<std::string> surroundings; // everything that isn't a parameter
+
+  void createInverseSubstringVector(std::vector<std::pair<int, int>>,
+                                    std::vector<std::string> out);
 
 public:
   Recipe(const std::string &form, std::shared_ptr<Recipe> p);
@@ -42,4 +46,6 @@ public:
   std::shared_ptr<Recipe> findDescendant(std::string form) const;
 
   bool validateArgs(const std::vector<Ingredient> &args) const;
+
+  std::string substituteArgs(const std::vector<Ingredient> &args) const;
 };
