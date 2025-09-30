@@ -1,10 +1,12 @@
 #pragma once
-#include "Recipe.h"
 #include <vector>
+#include <memory>
 
 enum ECookingMethod { Uncooked };
 
 enum EAttribute { None = 0 };
+
+class Recipe;
 
 // An ingredient is an instance of a recipe realized with specific inputs (other
 // ingredients)

@@ -1,4 +1,6 @@
 #include "Recipe.h"
+#include "Ingredient.h"
+#include "RecipeManager.h"
 
 Recipe::Recipe(const std::string &form, std::shared_ptr<Recipe> p) {
   format = form;
@@ -32,7 +34,7 @@ void Recipe::initializeParams(const RecipeManager &filledRecipeManager) {
   }
 }
 
-std::string Recipe::getFormat() { return format; }
+std::string Recipe::getFormat() const { return format; }
 
 std::shared_ptr<Recipe> Recipe::addChild(std::string form) {
   std::shared_ptr<Recipe> recipe(
@@ -41,7 +43,7 @@ std::shared_ptr<Recipe> Recipe::addChild(std::string form) {
   return recipe;
 }
 
-std::shared_ptr<Recipe> Recipe::findDescendant(std::string form) {
+std::shared_ptr<Recipe> Recipe::findDescendant(std::string form) const {
   for (std::shared_ptr<Recipe> child : children) {
     std::string childForm = child->getFormat();
     if (childForm == form)
@@ -49,10 +51,10 @@ std::shared_ptr<Recipe> Recipe::findDescendant(std::string form) {
   }
   for (std::shared_ptr<Recipe> child : children) {
     std::shared_ptr<Recipe> descendant = child->findDescendant(form);
-    if (descendant != null)
+    if (descendant != nullptr)
       return descendant;
   }
-  return null;
+  return nullptr;
 }
 
 bool Recipe::validateArgs(const std::vector<Ingredient> &args) const {

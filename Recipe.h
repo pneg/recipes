@@ -1,10 +1,12 @@
 #pragma once
-#include "Ingredient.h"
-#include "RecipeManager.h"
+#include <vector>
+#include <variant>
 #include <memory>
 #include <string>
 #include <unordered_set>
-#include <variant>
+
+class RecipeManager;
+class Ingredient;
 
 // Recipes, or recipe classes, are functions that take ingredients as parameters
 // and return ingredients As an analogy to object-oriented programming, think
@@ -33,11 +35,11 @@ public:
   // should only be run by RecipeManager
   void initializeParams(const RecipeManager &filledRecipeManager);
 
-  std::string getFormat();
+  std::string getFormat() const;
 
   std::shared_ptr<Recipe> addChild(std::string form);
 
-  std::shared_ptr<Recipe> findDescendant(std::string form);
+  std::shared_ptr<Recipe> findDescendant(std::string form) const;
 
   bool validateArgs(const std::vector<Ingredient> &args) const;
 };

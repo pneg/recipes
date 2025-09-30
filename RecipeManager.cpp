@@ -11,6 +11,6 @@ RecipeManager::addRecipe(const std::string &recipeForm,
   return parent->addChild(recipeForm);
 }
 
-std::shared_ptr<Recipe> RecipeManager::findRecipe(const std::string &recipeForm) {
+std::shared_ptr<Recipe> RecipeManager::findRecipe(const std::string &recipeForm) const {
   items.findDescendant(recipeForm);
 }
