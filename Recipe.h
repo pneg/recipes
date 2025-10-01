@@ -31,13 +31,17 @@ private:
   std::vector<std::variant<std::string, std::shared_ptr<Recipe>>> params;
   std::vector<std::string> surroundings; // everything that isn't a parameter
 
+  void initializeParams(const RecipeManager &filledRecipeManager);
+
   void createInverseSubstringVector(std::vector<std::pair<int, int>>,
                                     std::vector<std::string> out);
 
 public:
-  Recipe(const std::string &form, std::shared_ptr<Recipe> p);
-  // should only be run by RecipeManager
-  void initializeParams(const RecipeManager &filledRecipeManager);
+  Recipe(const std::string &form,
+         std::shared_ptr<Recipe>
+             p); // no params needed, necessary because of the root
+  Recipe(const std::string &form, std::shared_ptr<Recipe> p,
+         const RecipeManager &recipeManager);
 
   std::string getFormat() const;
 

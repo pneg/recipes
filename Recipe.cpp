@@ -3,9 +3,12 @@
 #include "RecipeManager.h"
 #include <utility>
 
-Recipe::Recipe(const std::string &form, std::shared_ptr<Recipe> p) {
-  format = form;
-  parent = p;
+Recipe::Recipe(const std::string &form, std::shared_ptr<Recipe> p)
+    : format(form), parent(p) {}
+Recipe::Recipe(const std::string &form, std::shared_ptr<Recipe> p,
+               const RecipeManager &recipeManager)
+    : format(form), parent(p) {
+  initializeParams(recipeManager);
 }
 void Recipe::initializeParams(const RecipeManager &filledRecipeManager) {
   int paramNum = 0;
@@ -92,8 +95,8 @@ bool Recipe::validateArgs(const std::vector<Ingredient> &args) const {
 std::string Recipe::substituteArgs(const std::vector<Ingredient> &args) const {
   std::string name = "";
   for (int i = 0; i < surroundings.size() - 1; i++) {
-    name+=surroundings[i];
-    name+=args[i].getName();
+    name += surroundings[i];
+    name += args[i].getName();
   }
-  name+=surroundings.back();
+  name += surroundings.back();
 }

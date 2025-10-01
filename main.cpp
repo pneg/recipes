@@ -1,25 +1,19 @@
-#include <iostream>
-#include <memory>
-#include <unordered_set>
-#include <vector>
+#include "RecipeManager.h"
 
-enum ECookingMethod : char {
-  Uncooked,
-  Burnt,
-  Seared,
-  Baked,
-  Roasted,
-  Boiled,
-  Grilled,
-  Smoked,
-  Fried,
-  Pickled
-};
+using RecipePointer = std::shared_ptr<Recipe>;
 
-enum EAttribute : char { None = 0, Cut = 1, Dried = 2, Shredded = 4 };
+void initializeRecipeManager(const RecipeManager &recipeManager);
 
 int main() {
-  ItemType item1 = ItemType("Swiss Cheese");
-  ItemType item2 = ItemType("Macaroni");
-  ItemType.merge(recipe1, item1, item2);
+  Recipe root("Food", nullptr);
+  RecipeManager recipeManager(root);
+
+  // initialization
+  RecipePointer cheese = recipeManager.addRecipe("Cheese");
+  RecipePointer cheddar = recipeManager.addRecipe("Cheddar Cheese", cheese);
+  RecipePointer swiss = recipeManager.addRecipe("Swiss Cheese", cheese);
+  RecipePointer pasta = recipeManager.addRecipe("Pasta");
+  RecipePointer spaghetti = recipeManager.addRecipe("Spaghetti");
+  RecipePointer macaroni = recipeManager.addRecipe("Macaroni");
+  RecipePointer macAndCheese = recipeManager.addRecipe("$r{Macaroni} & $r{Cheese}");
 }

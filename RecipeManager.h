@@ -1,8 +1,8 @@
 #pragma once
 #include "Recipe.h"
-#include <vector>
 #include <memory>
 #include <string>
+#include <vector>
 
 class Ingredient;
 
@@ -15,11 +15,13 @@ private:
   Recipe items;
 
 public:
+  RecipeManager(Recipe root);
+
   std::shared_ptr<Recipe> addRecipe(const std::string &recipeForm);
 
   std::shared_ptr<Recipe> addRecipe(const std::string &recipeForm,
                                     const std::shared_ptr<Recipe> &parent);
   std::shared_ptr<Recipe> findRecipe(const std::string &recipeForm) const;
-  Ingredient newIngredient(const std::shared_ptr<Recipe> &recipe,
-                           const std::vector<Ingredient> &params) const;
+  // Ingredient newIngredient(const std::shared_ptr<Recipe> &recipe,
+  //                          const std::vector<Ingredient> &params) const;
 };

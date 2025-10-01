@@ -1,5 +1,7 @@
 #include "RecipeManager.h"
 
+RecipeManager::RecipeManager(Recipe root) : items(root);
+
 std::shared_ptr<Recipe>
 RecipeManager::addRecipe(const std::string &recipeForm) {
   return items.addChild(recipeForm);

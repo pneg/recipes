@@ -3,9 +3,20 @@
 #include <memory>
 #include <string>
 
-enum ECookingMethod { Uncooked };
+enum ECookingMethod : char {
+  Uncooked,
+  Burnt,
+  Seared,
+  Baked,
+  Roasted,
+  Boiled,
+  Grilled,
+  Smoked,
+  Fried,
+  Pickled
+};
 
-enum EAttribute { None = 0 };
+enum EAttribute : char { None = 0, Cut = 1, Dried = 2, Shredded = 4 };
 
 class Recipe;
 
